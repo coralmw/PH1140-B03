@@ -1,0 +1,84 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy.stats as stats
+from scipy.misc import factorial
+from graphfit import plot
+
+#RUN 1
+r1s = '''
+49 48 43 52 60 62 49 52 51 49
+45 50 48 55 64 51 44 47 44 45
+53 60 51 46 57 41 64 55 49 45
+42 53 40 47 55 46 53 36 62 50
+59 56 49 63 46 51 39 58 42 47
+40 46 40 43 48 39 44 63 48 46
+40 57 44 39 41 47 57 38 33 45
+50 47 41 49 40 49 48 46 58 56
+50 53 47 43 49 52 44 50 40 42
+33 73 47 42 49 52 45 42 42 53
+31 54 52 65 42 57 50 49 42 59
+'''
+
+#RUN 2
+r2s = '''
+78 46 40 47 64 54 44 52 50 42
+43 44 48 46 46 53 53 60 62 47
+65 55 54 50 58 55 45 63 46 48
+38 39 60 57 53 53 45 54 37 44
+45 41 49 56 47 46 51 41 37 56
+53 38 40 42 45 52 48 55 48 48
+47 50 49 54 55 41 73 53 44 41
+43 52 45 50 49 38 47 58 51 55
+57 44 53 58 49 34 42 49 52 59
+44 61 57 52 52 41 49 41 49 56
+'''
+
+r1 = np.fromstring(r1s, sep=' ').reshape((1, -1)).flatten()
+r2 = np.fromstring(r2s, sep=' ').reshape((1, -1)).flatten()
+
+DATA = np.concatenate((r1,r2))
+#DATA = r1
+
+print('Q3')
+print("mean:{}".format(DATA.mean()))
+print("standard deviation: {}".format(DATA.std()))
+print("error of mean: {}".format(stats.sem(DATA)))
+
+print("Q4")
+print("mean:{:.2f}±{:.2f}".format(DATA.mean(), stats.sem(DATA)))
+stderror = DATA.std() / np.sqrt(2*len(DATA))
+print("standard deviation: {:.3f}±{:.2f}".format(DATA.std(), stderror))
+
+bins = [(start, start+5) for start in range(30, 90, 5)]
+for start, end in bins:
+    count = sum(np.logical_and(np.less(start, DATA), np.greater_equal(end, DATA)))
+    print(start, count)
+y, bins = np.histogram(DATA, bins=10, range=(30, 80))
+plt.bar(left=bins[:-1], height=y, width=5, color='b')
+plt.xlabel('Count after 10s')
+plt.ylabel('frequency')
+plt.title('Frequency per count range for 10s sample of 137Cs')
+plt.show()
+
+def p(n, mean):
+    return ( np.exp(-mean) * mean ** n ) / factorial(n)
+
+dist = stats.poisson(DATA.mean())
+
+centers = bins[:-1]+2.5
+probabilties = y / (5*len(DATA))
+probabiltiesError = np.sqrt(y) / (5*len(DATA))
+calculated = [dist.pmf(center) for center in centers]
+for center, prob, error, thero in zip(centers, probabilties, probabiltiesError, calculated):
+    print('{:.3f} {:.3e}±{:.3e} {:.3e}'.format(center, prob, error, thero))
+plot(y=probabilties, x=calculated, yerr=probabiltiesError, fitstyle='linear')
+plt.xlabel('Calculated count')
+plt.ylabel('real count')
+plt.title('Real vs Calculated counts')
+plt.show()
+
+plot(y=probabilties, x=centers, yerr=probabiltiesError)
+x = np.array(range(30, 75))
+plt.plot(x, np.array([dist.pmf(center) for center in x]) )
+plt.title('Real vs Calculated counts')
+plt.show()
