@@ -1,0 +1,232 @@
+%This is the source file for a LaTeX version of the example report
+%for the Communications Skills section of PH1140. It uses the
+%iopart.cls class file from the Institute of Physics. This class
+%file and its options can be obtained from http://authors.iop.org
+%by following the link to 'LaTeX Guidelines and Class File' and
+%should be downloaded into the same directory as your LaTeX source
+%code.
+%
+% S J Flockton 8th November 2007
+
+\documentclass[10pt]{iopart}
+\usepackage{graphicx}
+%Uncomment next line if AMS fonts required
+%\usepackage{iopams}
+\begin{document}
+
+\title[PH1140 Report - A N Other]{PH1140 Scientific Skills: Report
+\\Thermal radiation - the inverse square law}
+
+\author{A N Other\\27th November 2003}
+
+\begin{abstract}
+The inverse square law for the radiation intensity from a
+Stefan-Boltzmann lamp has been demonstrated to hold for distances
+greater than 15cm using a Pasco thermal radiation sensor. At
+distances below 15cm the effect of the finite size of the lamp
+element has been clearly observed and the effective position of
+the filament shown to be $(0.40 \pm  0.08)$cm behind its
+geometrical position.
+\end{abstract}
+
+%\maketitle
+
+\section{Introduction}
+
+The inverse square law describing the decrease in intensity of
+thermal radiation with distance from a point source follows
+immediately from conservation of energy \cite{yandf,nave}. The law
+can be readily tested using a suitable lamp and a radiation
+sensor. In the experiment described here commercial equipment in
+the form of a lamp and radiation detector produced by Pasco
+\cite{pasco} was used.
+
+The lamp is described as a Stefan-Boltzmann lamp. Its temperature
+can be determined accurately from the voltage and current supplied
+to the lamp in order to investigate the Stefan-Boltzmann law
+although this feature was not used in the experiment described
+here.
+
+The radiation sensor measures intensities in the wavelength range
+$0.64$ to $30\mu$m and provides relative intensities of the
+thermal radiation emitted by objects to which it is pointed.
+
+\section{Experimental procedure}
+
+The equipment was set up as shown in Figure \ref{setup}. The meter
+rule was taped to the table and the lamp fixed at one end of the
+rule with the centre of the filament set on zero. The radiation
+sensor was set at the same height as the filament and the two were
+aligned to be coaxial.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{setup}\\
+  \caption{Experimental arrangement showing the radiation sensor
+(left) and the lamp (right). (Figure 2.1 from reference
+\cite{pasco}).}\label{setup}
+\end{figure}
+
+The Manual gave the sensor position as about 1mm from the end of
+the detector housing. Measurements were made of the position of
+the front of the base along the ruler allowing the sensor position
+to be determined by subtracting $22$mm from the base position as
+shown in Figure \ref{distdet}. The position uncertainty was
+estimated to be $\pm1$mm. The filament size is about $3$mm.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\textwidth]{distdet}\\
+  \caption{Determination of the distance between the lamp and the
+sensor.}\label{distdet}
+\end{figure}
+
+With the lamp off, the millivoltmeter background reading was $(0.0
+\pm 0.1)$mV, independent of position, although care was needed
+since a nearby hand affected the reading. With the meter
+disconnected the reading was $-0.1$mV. A number of readings were
+made at different positions with the lamp off, all producing a
+value of zero or $-0.1$mV, consistent with the above meter offset.
+The mean of these readings, $-0.06$mV, was therefore defined as
+$R_0$.
+
+Trial readings showed that with a voltage of $10$V applied to the
+lamp the sensor produced an output of about $150$mV with a
+separation of lamp and sensor of $2.5$cm, $2$mV at $25$cm and
+$0.1$mV (consistent with background) at $90$cm.
+
+It became clear during these trial readings that a heat shield was
+needed between readings to avoid heating of the sensor holder.
+Such a shield, consisting of two pieces of silvered cardboard, was
+used. The final set of reading was taken quickly to reduce this
+heating effect and is recorded in Table \ref{table1}.
+
+\begin{table}
+  \centering
+  \caption{Radiation level as a function of distance between source
+and sensor.\\}\label{table1}
+\begin{tabular}{|c|c||c|c|}
+\hline
+ % % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+Separation  & Radiation sensor output  & Separation
+ & Radiation sensor output \\
+X (cm)&R (mV)&X(cm)&R (mV)\\
+\hline $2.5 \pm 0.1$ & $ 141.9 \pm 0.1$ & $ 18.0 \pm 0.1$ & $ 3.8 \pm 0.1$\\
+$3.0$ & $91.8$ & $20.0$ & $3.1$\\
+$3.5$ & $80.3$ & $25.0$ & $2.0$\\
+$4.0$ & $59.4$ & $30.0$ & $1.3$\\
+$4.5$ & $48.6$ & $35.0$ & $1.0$\\
+$5.0$ & $40.4$ & $40.0$ & $0.7$\\
+$6.0$ & $29.6$ & $45.0$ & $0.6$\\
+$7.0$ & $21.7$ & $50.0$ & $0.5$\\
+$8.0$ & $17.0$ & $60.0$ & $0.3$\\
+$9.0$ & $13.8$ & $70.0$ & $0.2$\\
+$10.0$ & $11.5$ & $80.0$ & $0.2$\\
+$12.0$ & $8.2$ & $90.0$ & $0.1$\\
+$14.0$ & $6.1$ & $100.0$ & $0.1$\\
+$16.0$ & $4.7$&&\\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Analysis of the data}
+
+\subsection{Comparison with inverse square law}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{raw}\\
+  \caption{Intensity as a function of X.}\label{raw}
+\end{figure}
+
+The data were analysed using gnuplot. A simple plot of $R-R_0$
+versus $X$ is shown in Figure \ref{raw} and of $R-R_0$ versus
+$1/X^2$ in Figure \ref{1overxsq} for all data points. The
+penultimate point in Figure \ref{1overxsq} appears to be badly
+measured but even ignoring this point the data are not well-fitted
+by a straight line. Thus the inverse square law does not appear to
+be describing the behaviour well.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{1overxsq}\\
+  \caption{Intensity as a function of $1/X^2$.}\label{1overxsq}
+\end{figure}
+
+A possible reason for this observation is that the source is not
+point-like (as noted earlier it is about $3$mm in size). If this
+is the cause of the deviation from inverse square law behaviour,
+data points at large $X$ might still be expected to be a good fit
+to $1/X^2$. Indeed when only those points with $X>15$cm are
+plotted (Figure \ref{select_1overxsq}) the fit is much better. The
+straight line passes through all the error bars, implying that
+they are in fact longer than one standard deviation, and have been
+overestimated.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{select_1overxsq}\\
+  \caption{Intensity as a function of $1/X^2$  for large X.}\label{select_1overxsq}
+\end{figure}
+
+\subsection{Compensation for finite size of source}
+
+Another possible reason for the curve in the points shown in
+Figure \ref{1overxsq} is that because of its finite size, the
+effective source was not in the geometrical centre of the lamp,
+leading to an offset in the distance measurements. This was
+investigated by comparing the fit obtained to  $R=A/X^2$ with that
+obtained to $R=A/(X+c)^2$. These are compared in Figures
+\ref{fit_raw} and \ref{fit_raw_offset}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{fit_raw}\\
+  \caption{Fit of intensity to function  $A/X^2$.}\label{fit_raw}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{fit_raw_offset}\\
+  \caption{Fit of intensity to function  $A/(X+c)^2$.}\label{fit_raw_offset}
+\end{figure}
+
+
+Fitting to the first equation gave a result of  $A = (90 \pm
+1)\times 10^1$~mV~cm$^2$, while the second, which can be seen to
+fit the data much better, gave results of $A  = (116 \pm  6)\times
+10^1$~mV~cm$^2$ and $c = (0.40 \pm 0.08)$cm. It seems, therefore,
+that the effective centre of the lamp is about $0.4$cm behind
+where it was originally thought to have been.
+
+\section{Summary}
+
+The radiation intensity from a lamp was measured as a function of
+distance, $X$, from a lamp. For  $X$ larger than about $15$cm a
+good fit was obtained to the inverse square law. For smaller
+values of $X$ deviations were observed, due either to a systematic
+error in the measurement of the distance or to the finite size of
+the lamp element. A simple model with $R-R_0$  proportional to
+$1/(X+c)^2$ gave an excellent fit for all the data with  $c =
+(0.40 \pm 0.08)$cm. From this one cannot conclude whether the
+deviation was due to the finite size of the lamp or a systematic
+error in the distance measurement; both are consistent with the
+observed data. A small long term drift of the output of the lamp
+was observed, but this was insignificant compared with the other
+sources of uncertainty.
+
+\section*{References}
+
+\begin{thebibliography}{10}
+\bibitem{yandf} Young H D and Freedman R A, {\it University Physics:
+with Modern Physics} 11th edition. New York: Addison Wesley, 2004,
+p567.
+\bibitem{nave} Nave R, ``Inverse Square Law'',
+http://hyperphysics.phy-astr.gsu.edu/hbase/forces/isq.html,
+retrieved 24 November 2003.
+\bibitem{pasco} Instruction Manual and Experiment Guide for the PASCO
+scientific Model TD-8553/8554A/8555. PASCO scientific, 10101
+Foothills Blvd., Roseville, CA, USA, 1988.
+\end{thebibliography}
+
+\end{document}
