@@ -9,14 +9,12 @@
 \author{T GM Parks\\28th December 2014}
 
 \begin{abstract}
-The distribution of the number of $\gamma$ emissions observed from a radioactive source in a constant time was shown to be modelled by a Poisson distribution. We used a GM tube to count $\gamma$ emissions from a Caesium-137 source for 10 seconds 100 times, and found that the mean, standard deviation and the 'shape' of the distribution of counts was modelled well by a Poisson distribution.
+The distribution of the number of $\gamma$ emissions observed from a radioactive source in a constant time was shown to be modeled by a Poisson distribution. We used a GM tube to count $\gamma$ emissions from a Caesium-137 source for 10 seconds 100 times, and found that the mean, standard deviation and the 'shape' of the distribution of counts was modelled well by a Poisson distribution.
 \end{abstract}
 
 %\maketitle
 
 \section{Introduction}
-
-
 
 A custom Poisson distribution function was created in order to compare the rates at the centre of the bins. As the bins were 5 discrete units wide, the centre point of the bin was a fractional number (N.5) and so the following implementation of the Poisson distribution was used:
 
@@ -33,9 +31,26 @@ The predicted number of counts for each bin was compared to the Poisson distribu
 \end{center}
 \end{figure}
  We found that all the bin counts were within 2 standard deviations, and all but 3 were within a single standard deviation, indicating both a good model fit and good estimation of errors.
+
+\section{Experimental procedure}
+
+A radioactive source was placed in a Lead cage, ~10cm below the apeture for a Giger-Muller tube. No sheilding was placed bwteen the source and the detector, and the experimental appratus was not changed. The GM tube was connected to a timer counter set for a 40kV potential and a 10 second count.
+
+A 10 second count of radioactive emissions was taken 100 times and recorded.
+
+\section{Analysis of the data}
+
+\subsection{Comparison with Poisson distribution}
+
+The data was analyzed using python+numpy. The mean, standard deviation, and standard error of the mean were calculated
+mean:49.161904761904765
+standard deviation: 7.549990614341448
+error of mean: 0.5222437709993091
+
     
 \section{Summary}
 
 The distribution was found to agree with a Poisson distribution 
 
 \end{document}
+
