@@ -16,4 +16,26 @@ The distribution of the number of $\gamma$ emissions observed from a radioactive
 
 \section{Introduction}
 
+
+
+A custom Poisson distribution function was created in order to compare the rates at the centre of the bins. As the bins were 5 discrete units wide, the centre point of the bin was a fractional number (N.5) and so the following implementation of the Poisson distribution was used:
+
+def p(n, mean):
+	return ( np.exp(-mean) * mean ** n ) / scipy.misc.factorial(n)
+
+Where the function scipy.misc.factorial implements the Gamma function.
+
+The predicted number of counts for each bin was compared to the Poisson distribution for that bin as shown in \begin{figure}[htbp]
+\begin{center}
+\includegraphics[height=5cm]{errorcomp.pdf}
+\caption{default}
+\label{default}
+\end{center}
+\end{figure}
+ We found that all the bin counts were within 2 standard deviations, and all but 3 were within a single standard deviation, indicating both a good model fit and good estimation of errors.
+    
+\section{Summary}
+
+The distribution was found to agree with a Poisson distribution 
+
 \end{document}
