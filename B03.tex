@@ -16,7 +16,7 @@ The distribution of the number of $\gamma$ emissions observed from a radioactive
 
 \section{Introduction}
 
-A custom Poisson distribution function was created in order to compare the rates at the centre of the bins. As the bins were 5 discrete units wide, the centre point of the bin was a fractional number (N.5) and so the following implementation of the Poisson distribution was used:
+A custom Poisson distribution function was created in order to compare the rates at the center of the bins. As the bins were 5 discrete units wide, the center point of the bin was a fractional number (N.5) and so the following implementation of the Poisson distribution was used:
 
 def p(n, mean):
 	return ( np.exp(-mean) * mean ** n ) / scipy.misc.factorial(n)
@@ -34,9 +34,10 @@ The predicted number of counts for each bin was compared to the Poisson distribu
 
 \section{Experimental procedure}
 
-A radioactive source was placed in a Lead cage, ~10cm below the apeture for a Giger-Muller tube. No sheilding was placed bwteen the source and the detector, and the experimental appratus was not changed. The GM tube was connected to a timer counter set for a 40kV potential and a 10 second count.
+A radioactive source was placed in a Lead cage, 10cm below the aperture for a Geiger-Muller tube. No shielding was placed between the source and the detector, and the experimental apparatus was not changed. The GM tube was connected to a timer counter set for a 40kV potential and a 10 second count.
 
-A 10 second count of radioactive emissions was taken 100 times and recorded.
+A 10 second count of radioactive emissions was taken 100 times and recorded. The short integration time for the count was in order to increase the standard deviation of the counts, and make comparison with standard distributions clearer.
+
 
 \section{Analysis of the data}
 
